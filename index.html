@@ -196,18 +196,46 @@
       }
 
       @media (max-width: 768px) {
-          h1 {
-              font-size: 2rem;
-          }
+            h1 {
+                font-size: 2rem;
+            }
 
-          .container {
-              padding: 1rem;
-          }
+            .container {
+                padding: 1rem;
+            }
 
-          section {
-              padding: 1.5rem;
-          }
-      }
+            section {
+                padding: 1.5rem;
+            }
+
+            .header-content {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .header-image {
+                display: none;
+            }
+            .header-name {
+                width: 200px;
+                height: 150px;
+                object-fit: contain;
+                justify-self: center;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+
+            .music-links {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .music-links a {
+                width: 100%;
+            }
+        }
   </style>
 </head>
 <body>
