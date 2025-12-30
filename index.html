@@ -209,12 +209,14 @@
             }
 
             .header-content {
-                grid-template-columns: 1fr;
-                gap: 1rem;
+                /* grid-template-columns: 1fr; */
+                /* gap: 1rem; */
             }
-
             .header-image {
-                display: none;
+                width: 80px;
+                height: 50px;
+                object-fit: contain;
+                justify-self: center;
             }
             .header-name {
                 width: 200px;
@@ -224,7 +226,11 @@
             }
 
             .tagline {
+                color: #fcf7eb;
+                font-style: italic;
                 font-size: 1rem;
+                max-width: 200px;
+                margin: 0;
             }
 
             .music-links {
