@@ -9,6 +9,7 @@
           margin: 0;
           padding: 0;
           box-sizing: border-box;
+          cursor: url('src/assets/pt_cursor.png'), auto
       }
 
       body {
@@ -16,10 +17,12 @@
           background-color: #fcf7eb;
           color: #505f33;
           line-height: 1.6;
+          cursor: url('src/assets/pt_cursor.png'), auto
       }
 
       header {
-          background: linear-gradient(135deg, #cd9602, #db730b);
+          background: #cd9602;
+          background: linear-gradient(135deg, #db730b, #cd9602, #db730b);
           padding: 2rem;
           text-align: center;
           box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -27,7 +30,7 @@
 
       .header-content {
           display: grid;
-          grid-template-columns: 1fr 2fr 1fr;
+          /* grid-template-columns: 1fr 2fr 1fr; */
           align-items: center;
           max-width: 1000px;
           margin: 0 auto 1rem auto;
@@ -86,16 +89,17 @@
       }
 
       h2 {
-          color: #505f33;
+          color: #332700;
           font-size: 2rem;
           margin-bottom: 1.5rem;
-          border-bottom: 3px solid #db730b;
+          /* border-bottom: 3px solid #db730b; */
           padding-bottom: 0.5rem;
           display: inline-block;
       }
 
       .music-player {
-          background: linear-gradient(to right, #79a1a3, #505f33);
+          background: #79a1a3;
+          /* background: linear-gradient(to right, #79a1a3, #505f33); */
           padding: 2rem;
           border-radius: 8px;
           text-align: center;
@@ -111,7 +115,7 @@
       }
 
       .music-links a {
-          background-color: #cd9602;
+          background-color: #3d5150;
           color: #fcf7eb;
           padding: 0.8rem 1.5rem;
           text-decoration: none;
@@ -121,7 +125,7 @@
       }
 
       .music-links a:hover {
-          background-color: #db730b;
+          background-color: #332700;
           transform: translateY(-2px);
           box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       }
@@ -144,25 +148,25 @@
       }
 
       .show-date {
-          color: #db730b;
+          color: #332700;
           font-weight: bold;
           font-size: 1.1rem;
       }
       .live-performance {
-          color: #db730b;
+          color: #332700;
           font-weight: bold;
           font-size: 1.1rem;
           margin-top: 0.5rem;
       }
 
       .show-venue {
-          color: #505f33;
+          color: #332700;
           font-size: 1.2rem;
           margin: 0.5rem 0;
       }
 
       .show-location {
-          color: #79a1a3;
+          color: #332700;
           font-style: italic;
       }
 
@@ -269,16 +273,13 @@
 <body>
   <header>
     <div class="header-content">
-        <img src="src/assets/pt_bird.png" alt="Porch Talk" class="header-image">
+        <!-- <img src="src/assets/pt_bird.png" alt="Porch Talk" class="header-image"> -->
         <div class="h1-container">
             <!-- <h1>Porch Talk</h1> -->
             <img src="src/assets/pt_sun_name.png" alt="Porch Talk" class="header-name">
             <p class="tagline">A band of fun loving friends watching the world turn </p>
-            <!-- <p class="tagline">porch talk; verb; 1. to sit around with friends, have a cozy
-              beverage, and connect deeply about everything and nothing while
-              the world turns.</p> -->
         </div>
-        <img src="src/assets/pt_bird.png" alt="Porch Talk" class="header-image">
+        <!-- <img src="src/assets/pt_bird.png" alt="Porch Talk" class="header-image"> -->
     </div>
 </header>
 
@@ -299,15 +300,10 @@
             <h2>Upcoming Shows</h2>
             <ul class="shows-list">
               <li class="show-item">
-                <div class="show-date">Wednesday, January 15th, 2025</div>
+                <div class="show-date">Wednesday, January 28th, 2025</div>
                 <div class="show-venue">Swing Station</div>
                 <div class="show-location">Fort Collins, CO • 6:30 PM</div>
             </li>
-            <li class="show-item">
-              <div class="show-date">Tuesday, January 22nd, 2025</div>
-              <div class="show-venue">Avogadro's Number</div>
-              <div class="show-location">Fort Collins, CO • 6:30 PM</div>
-          </li>
             </ul>
             <h2>Past Shows</h2>
             <ul class="shows-list">
