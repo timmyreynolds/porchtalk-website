@@ -14,7 +14,7 @@
       }
 
       body {
-          font-family: 'Georgia', serif;
+          font-family: Arial, Helvetica, sans-serif;
           background-color: #fcf7eb;
           color: #505f33;
           line-height: 1.6;
@@ -24,10 +24,37 @@
       header {
           background: #cd9602;
           background: linear-gradient(135deg, #db730b, #cd9602, #db730b);
-          padding: 2rem;
+          padding-top: 2rem;
+          padding-bottom: 1rem;
           text-align: center;
           box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       }
+      nav {
+            background-color: rgba(80, 95, 51, 0.9);
+            padding: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 10rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: #fcf7eb;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-family: Arial, Helvetica, sans-serif;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #cd9602;
+        }
 
       .header-content {
           display: grid;
@@ -59,7 +86,7 @@
 
       h1 {
           font-size: 3rem;
-          font-family: 'Georgia', serif;
+          font-family: Arial, Helvetica, sans-serif;
           color: #fcf7eb;
           text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
           margin: 0;
@@ -142,7 +169,7 @@
           padding: 1.5rem;
           margin-bottom: 1rem;
           border-radius: 8px;
-          border-left: 4px solid #cd9602;
+          /* border-left: 4px solid #cd9602; */
           transition: transform 0.2s ease;
       }
       .pt-def {
@@ -207,6 +234,69 @@
         .about-text-wrapper {
             flex: 1;
         }
+                .merch-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 1.5rem;
+            position: relative;
+        }
+
+        .merch-grid::before {
+            content: 'Coming Soon';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            font-weight: bold;
+            color: #505f33;
+            z-index: 10;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+            pointer-events: none;
+        }
+
+        .merch-box {
+            background: linear-gradient(135deg, #fcf7eb, #f5eed5);
+            border-radius: 4px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+            filter: grayscale(100%) opacity(0.5);
+            pointer-events: none;
+        }
+
+        .merch-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(80, 95, 51, 0.2);
+            border-color: #db730b;
+        }
+
+        .merch-box h3 {
+            color: #505f33;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .merch-box p {
+            color: #79a1a3;
+            font-size: 1rem;
+        }
+
+        .merch-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .merch-img {
+            width: 300px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
+
 
       footer {
           background-color: #505f33;
@@ -234,6 +324,18 @@
       @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
+            }
+            nav ul {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                font-size: 1.1rem;
+            }
+
+            nav {
+                padding: 0.75rem;
             }
 
             .container {
@@ -280,24 +382,38 @@
                 flex: none;
                 width: 100%;
             }
+            .merch-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .merch-img {
+                width: 60%;
+                max-width: 250px;
+            }
         }
   </style>
 </head>
 <body>
   <header>
     <div class="header-content">
-        <!-- <img src="src/assets/pt_bird.png" alt="Porch Talk" class="header-image"> -->
         <div class="h1-container">
-            <!-- <h1>Porch Talk</h1> -->
             <img src="src/assets/PorchTalk.png" alt="Porch Talk" class="header-name">
             <p class="tagline">A band of fun loving friends watching the world turn </p>
         </div>
-        <!-- <img src="src/assets/pt_bird.png" alt="Porch Talk" class="header-image"> -->
     </div>
+    <nav>
+        <ul>
+            <li><a href="#listen">Listen</a></li>
+            <li><a href="#shows">Shows</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#merch">Merch</a></li>
+        </ul>
+    </nav>
 </header>
 
     <div class="container">
-        <section>
+        <section id="listen">
             <h2>Listen</h2>
             <div class="music-player">
                 <p style="font-size: 1.2rem; margin-bottom: 1rem;">Stream our latest tracks</p>
@@ -311,16 +427,30 @@
                 </div>
         </section>
 
-        <section>
+        <section id="shows">
             <h2>Upcoming Shows</h2>
             <ul class="shows-list">
               <li class="show-item">
-                <div class="show-date">Wednesday, January 28th, 2025</div>
+                <div class="show-date">Wednesday, Feb 25th, 2025</div>
                 <div class="show-venue">Swing Station</div>
                 <div class="show-location">Fort Collins, CO • 6:30 PM</div>
             </li>
             </ul>
             <h2>Past Shows</h2>
+            <ul class="shows-list">
+              <li class="show-item">
+                <div class="show-date">Wednesday, Jan 28th, 2025</div>
+                <div class="show-venue">Swing Station</div>
+                <div class="show-location">Fort Collins, CO • 6:30 PM</div>
+                <a 
+                    href="https://youtu.be/2JSAQWYKH7w?si=zIxKpdnnbQZj4B2y" 
+                    class="live-performance" 
+                    target="_blank" 
+                    rel="noopener noreferrer">
+                        Watch Here 
+                </a>   
+            </li>
+            </ul>
             <ul class="shows-list">
               <li class="show-item">
                 <div class="show-date">Wednesday, December 10th, 2025</div>
@@ -360,7 +490,7 @@
             </li>
             </ul>
         </section>
-        <section>
+        <section id="about">
             <h2>About Us</h2>
             <div class="about-content">
                 <img src="src/assets/pt_cover_photo.JPG" alt="Porch Talk band members" class="band-photo">
@@ -390,6 +520,26 @@
 
                     </p>
                 </div>
+            </div>
+        </section>
+        <section id="merch">
+            <h2>Merch</h2>
+            <div class="merch-grid">
+                <a href="/merch" class="merch-box">
+                    <h3>Apparel</h3>
+                    <img class="merch-img" src="src/assets/bird_hat.jpg" > </img>
+                    <p>T-shirts, hoodies, and more</p>
+                </a>
+                <a href="/merch" class="merch-box">
+                    <h3>Stickers</h3>
+                    <img class="merch-img" src="src/assets/pt_sticker.png" > </img>
+                    <p>Stickers and decals</p>
+                </a>
+                <a href="/merch" class="merch-box">
+                    <h3>Miscellaneous</h3>
+                    <img class="merch-img" src="src/assets/bird_hat.jpg" > </img>
+                    <p>Posters, patches, and more</p>
+                </a>
             </div>
         </section>
     </div>
