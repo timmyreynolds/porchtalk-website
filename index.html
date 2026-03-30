@@ -5,402 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Porch Talk - Cozy Up</title>
     <link rel="icon" type="image/x-icon" href="src/assets/pt_cursor.png">
-    <style>
-      * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          cursor: url('src/assets/pt_cursor.png'), auto
-      }
-
-      body {
-          font-family: Arial, Helvetica, sans-serif;
-          background-color: #fcf7eb;
-          color: #505f33;
-          line-height: 1.6;
-          cursor: url('src/assets/pt_cursor.png'), auto
-      }
-
-      header {
-          background: #cd9602;
-          background: linear-gradient(135deg, #db730b, #cd9602, #db730b);
-          padding-top: 2rem;
-          padding-bottom: 1rem;
-          text-align: center;
-          box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      }
-      nav {
-            background-color: rgba(80, 95, 51, 0.9);
-            padding: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 10rem;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav a {
-            color: #fcf7eb;
-            text-decoration: none;
-            font-size: 1.4rem;
-            font-family: Arial, Helvetica, sans-serif;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: #cd9602;
-        }
-
-      .header-content {
-          display: grid;
-          /* grid-template-columns: 1fr 2fr 1fr; */
-          align-items: center;
-          max-width: 1000px;
-          margin: 0 auto 1rem auto;
-      }
-
-      .header-image {
-          width: 150px;
-          height: 150px;
-          object-fit: contain;
-          justify-self: center;
-      }
-      .header-name {
-          width: 450px;
-          height: 100px;
-          object-fit: contain;
-          justify-self: center;
-      }
-
-      .h1-container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 0.25rem;
-      }
-
-      h1 {
-          font-size: 3rem;
-          font-family: Arial, Helvetica, sans-serif;
-          color: #fcf7eb;
-          text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-          margin: 0;
-          text-align: center;
-      }
-
-      .tagline {
-          color: #fcf7eb;
-          font-style: italic;
-          font-size: 1.1rem;
-          max-width: 600px;
-          margin: 0;
-      }
-
-      .container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 2rem;
-      }
-
-      section {
-          background: white;
-          border-radius: 12px;
-          padding: 2rem;
-          margin-bottom: 2rem;
-          box-shadow: 0 2px 8px rgba(80, 95, 51, 0.1);
-          border-left: 5px solid #79a1a3;
-      }
-
-      h2 {
-          color: #332700;
-          font-size: 2rem;
-          margin-bottom: 1.5rem;
-          font-family: "Helvetica", Arial, sans-serif;
-          font-weight: bold; /* or 700 *
-          /* border-bottom: 3px solid #db730b; */
-          padding-bottom: 0.5rem;
-          display: inline-block;
-      }
-
-      .music-player {
-          background: #79a1a3;
-          /* background: linear-gradient(to right, #79a1a3, #505f33); */
-          padding: 2rem;
-          border-radius: 8px;
-          text-align: center;
-          color: #fcf7eb;
-      }
-
-      .music-links {
-          display: flex;
-          gap: 1rem;
-          justify-content: center;
-          flex-wrap: wrap;
-          margin-top: 1.5rem;
-      }
-
-      .music-links a {
-          background-color: #3d5150;
-          color: #fcf7eb;
-          padding: 0.8rem 1.5rem;
-          text-decoration: none;
-          border-radius: 25px;
-          transition: all 0.3s ease;
-          font-weight: bold;
-      }
-
-      .music-links a:hover {
-          background-color: #cd9602;
-          transform: translateY(-2px);
-          box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      }
-
-      .shows-list {
-          list-style: none;
-      }
-
-      .show-item {
-          background: #fcf7eb;
-          padding: 1.5rem;
-          margin-bottom: 1rem;
-          border-radius: 8px;
-          /* border-left: 4px solid #cd9602; */
-          transition: transform 0.2s ease;
-      }
-      .pt-def {
-          background: #fcf7eb;
-          font-size: 1.1rem;
-          font-family:Arial, Helvetica, sans-serif;
-          padding: 1.5rem;
-          margin-bottom: 1rem;
-          border-radius: 8px;
-          transition: transform 0.2s ease;
-      }
-
-      .show-item:hover {
-          transform: translateX(5px);
-      }
-
-      .show-date {
-          color: #332700;
-          font-weight: bold;
-          font-size: 1.1rem;
-      }
-      .live-performance {
-          color: #332700;
-          /* font-weight: bold; */
-          /* font-size: 1.1rem; */
-          margin-top: 0.5rem;
-      }
-
-      .show-venue {
-          color: #332700;
-          font-size: 1.2rem;
-          margin: 0.5rem 0;
-      }
-
-      .show-location {
-          color: #332700;
-          font-style: italic;
-      }
-
-      .about-text {
-            font-size: 1.1rem;
-            font-family:Arial, Helvetica, sans-serif;
-            color: #505f33;
-            line-height: 1.8;
-        }
-
-        .about-content {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .band-photo {
-            flex: 0 0 350px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(80, 95, 51, 0.2);
-            /* border: 4px solid #cd9602; */
-            object-fit: cover;
-            max-width: 30%;
-        }
-
-        .about-text-wrapper {
-            flex: 1;
-        }
-                .merch-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 1.5rem;
-            position: relative;
-        }
-
-        .merch-grid::before {
-            content: 'Coming Soon';
-            font-family:Arial, Helvetica, sans-serif;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 3rem;
-            font-weight: bold;
-            color: #505f33;
-            z-index: 10;
-            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
-            pointer-events: none;
-        }
-
-        .merch-box {
-            background: linear-gradient(135deg, #fcf7eb, #f5eed5);
-            border-radius: 4px;
-            padding: 1rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: block;
-            filter: grayscale(100%) opacity(0.5);
-            pointer-events: none;
-        }
-
-        .merch-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(80, 95, 51, 0.2);
-            border-color: #db730b;
-        }
-
-        .merch-box h3 {
-            color: #505f33;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .merch-box p {
-            color: #79a1a3;
-            font-size: 1rem;
-        }
-
-        .merch-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .merch-img {
-            width: 300px;
-            object-fit: contain;
-            margin-bottom: 1rem;
-        }
-
-
-
-      footer {
-          background-color: #505f33;
-          color: #fcf7eb;
-          text-align: center;
-          padding: 2rem;
-          margin-top: 3rem;
-      }
-
-      .social-links {
-          margin-top: 1rem;
-      }
-
-      .social-links a {
-          color: #cd9602;
-          text-decoration: none;
-          margin: 0 1rem;
-          transition: color 0.3s ease;
-      }
-
-      .social-links a:hover {
-          color: #db730b;
-      }
-
-      @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            nav ul {
-                gap: 1.5rem;
-                flex-wrap: wrap;
-            }
-
-            nav a {
-                font-size: 1.1rem;
-            }
-
-            nav {
-                padding: 0.75rem;
-            }
-
-            .container {
-                padding: 1rem;
-            }
-
-            section {
-                padding: 1.5rem;
-            }
-            .header-image {
-                width: 80px;
-                height: 50px;
-                object-fit: contain;
-                justify-self: center;
-            }
-            .header-name {
-                width: 200px;
-                height: 150px;
-                object-fit: contain;
-                justify-self: center;
-            }
-
-            .tagline {
-                color: #fcf7eb;
-                font-style: italic;
-                font-size: 1rem;
-                max-width: 200px;
-                margin: 0;
-            }
-
-            .music-links {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .music-links a {
-                width: 100%;
-            }
-            .about-content {
-                flex-direction: column;
-            }
-
-            .band-photo {
-                flex: none;
-                width: 100%;
-            }
-            .merch-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .merch-img {
-                width: 60%;
-                max-width: 250px;
-            }
-        }
-  </style>
+    <link rel="stylesheet" href="src/styles.css">
 </head>
 <body>
   <header>
     <div class="header-content">
         <div class="h1-container">
             <img src="src/assets/PorchTalk.png" alt="Porch Talk" class="header-name">
-            <p class="tagline">A band of fun loving friends watching the world turn </p>
+            <p class="tagline">A band of fun loving friends watching the world turn</p>
         </div>
     </div>
     <nav>
@@ -411,155 +23,125 @@
             <li><a href="#merch">Merch</a></li>
         </ul>
     </nav>
-</header>
+  </header>
 
-    <div class="container">
-        <section id="listen">
-            <h2>Listen</h2>
-            <div class="music-player">
-                <p style="font-size: 1.2rem; margin-bottom: 1rem;">Stream our latest tracks</p>
-                <div class="music-links">
-                    <a href="https://www.youtube.com/@Porch-Talk-Band" target="_blank">YouTube</a>
-                    <a href="https://soundcloud.com/porch-talk-1" target="_blank">SoundCloud</a>
-                    <iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2245833140&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-                    <iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2245832942&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-                    <iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2245831160&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-                    <iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2245831355&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-                </div>
-        </section>
-
-        <section id="shows">
-            <h2>Upcoming Shows</h2>
-            <ul class="shows-list">
-              <li class="show-item">
-                <div class="show-date">Wednesday, Feb 26th, 2025</div>
-                <div class="show-venue">Swing Station</div>
-                <div class="show-location">Fort Collins, CO • 6:30 PM</div>
-            </li>
-            </ul>
-            <ul class="shows-list">
-              <li class="show-item">
-                <div class="show-date">Tuesday, Feb 25th, 2025</div>
-                <div class="show-venue">Avogadros Number</div>
-                <div class="show-location">Fort Collins, CO • 7:00 PM</div>
-            </li>
-            </ul>
-            <h2>Past Shows</h2>
-            <ul class="shows-list">
-              <li class="show-item">
-                <div class="show-date">Wednesday, Jan 28th, 2025</div>
-                <div class="show-venue">Swing Station</div>
-                <div class="show-location">Fort Collins, CO • 6:30 PM</div>
-                <a 
-                    href="https://youtu.be/2JSAQWYKH7w?si=zIxKpdnnbQZj4B2y" 
-                    class="live-performance" 
-                    target="_blank" 
-                    rel="noopener noreferrer">
-                        Watch Here 
-                </a>   
-            </li>
-            </ul>
-            <ul class="shows-list">
-              <li class="show-item">
-                <div class="show-date">Wednesday, December 10th, 2025</div>
-                <div class="show-venue">Swing Station</div>
-                <div class="show-location">Fort Collins, CO, 6:30 PM</div>
-                <a 
-                    href="https://youtu.be/fiBTt4vU4ow?si=q5iakizqlGPwI0Wb" 
-                    class="live-performance" 
-                    target="_blank" 
-                    rel="noopener noreferrer">
-                        Watch Here 
-                </a>                
-            </li>
-            <li class="show-item">
-                  <div class="show-date">Saturday, December 3rd, 2025</div>
-                  <div class="show-venue">Treehouse Studios</div>
-                  <div class="show-location">Fort Collins, CO, 7:00 PM</div>
-                  <a 
-                    href="https://youtu.be/Wmi0ZSjwz2o?si=NFokOKUg2yKqjhsV" 
-                    class="live-performance" 
-                    target="_blank" 
-                    rel="noopener noreferrer">
-                        Watch Here 
-                 </a>                 
-            </li>
-              <li class="show-item">
-                <div class="show-date">Tuesday, September 20th, 2025</div>
-                <div class="show-venue">Avogadros Number</div>
-                <div class="show-location">Fort Collins, CO • 8:00 PM</div>
-            
-            </li>
-              <li class="show-item">
-                  <div class="show-date">Wednesday, August 7th, 2025</div>
-                  <div class="show-venue">Swing Station</div>
-                  <div class="show-location">Fort Collins, CO • 7:00 PM</div>
-                
-            </li>
-            </ul>
-        </section>
-        <section id="about">
-            <h2>About Us</h2>
-            <div class="about-content">
-                <img src="src/assets/pt_cover_photo.JPG" alt="Porch Talk band members" class="band-photo">
-                <div class="about-text-wrapper">
-                        <div class="pt-def">
-                            <a class="show-location">porch talk; verb; </a>
-                            1. to sit around with friends, share a cozy beverage, and connect 
-                            with the big and small while the world turns 
-                        </div>
-                          <p class="about-text">
-                          Converging in Fort Collins, Porch Talk is a group of friendly transplants who’ve
-                          grown up and traveled coast to coast to hang out in the now.
-                          Bringing together a multitude of life experiences, influences, and styles, 
-                          Porch Talk is built on having fun and loving to create.
-                          <br>
-                          <br>
-                          A four piece band made up of Timmy (guitar/vocals), Zane (guitar/vocals), 
-                          Kevin (drums), and John (bass/mandolin/vocals), each member contributes to
-                          the vision of Porch Talk. The group is constantly writing new material and recording 
-                          their own music in the unofficial Treehouse Studios. Inspired by good conversations
-                          on a nice porch—often fueled by coffee, fresh air, and sunshine—their songs reflect
-                          everyday life and a love for creating. Porch Talk is simply themselves 
-                          and grateful to be part of the evolving Northern Colorado music scene.
-                           <br>
-                            
-
-
-                    </p>
-                </div>
+  <div class="container">
+    <section id="listen">
+        <h2>Listen</h2>
+        <div class="music-player">
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;">Stream our latest tracks</p>
+            <div class="music-links">
+                <a href="https://www.youtube.com/@Porch-Talk-Band" target="_blank">YouTube</a>
+                <a href="https://soundcloud.com/porch-talk-1" target="_blank">SoundCloud</a>
+                <iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2245833140&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+                <iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2245832942&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+                <iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2245831160&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+                <iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2245831355&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
             </div>
-        </section>
-        <section id="merch">
-            <h2>Merch</h2>
-            <div class="merch-grid">
-                <a href="/merch" class="merch-box">
-                    <h3>Apparel</h3>
-                    <img class="merch-img" src="src/assets/bird_hat.jpg" > </img>
-                    <p>T-shirts, hoodies, and more</p>
-                </a>
-                <a href="/merch" class="merch-box">
-                    <h3>Stickers</h3>
-                    <img class="merch-img" src="src/assets/pt_sticker.png" > </img>
-                    <p>Stickers and decals</p>
-                </a>
-                <a href="/merch" class="merch-box">
-                    <h3>Miscellaneous</h3>
-                    <img class="merch-img" src="src/assets/bird_hat.jpg" > </img>
-                    <p>Posters, patches, and more</p>
-                </a>
-            </div>
-        </section>
-    </div>
-
-    <footer>
-        <p>&copy; 2025 Porch Talk. All rights reserved.</p>
-        <div class="social-links">
-            <a href="https://www.instagram.com/porchtalkband/">Instagram</a>
-            <a href="https://www.youtube.com/@Porch-Talk-Band">YouTube</a>
-            <a href="https://soundcloud.com/porch-talk-1" target="_blank">SoundCloud</a>
-            <a >porchtalkmusic@gmail.com</a>
         </div>
-    </footer>
+    </section>
+
+    <section id="shows">
+        <h2>Upcoming Shows</h2>
+        <ul class="shows-list" id="upcoming-shows"></ul>
+
+        <h2>Past Shows</h2>
+        <ul class="shows-list" id="past-shows"></ul>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <div class="about-content">
+            <img src="src/assets/pt_cover_photo.JPG" alt="Porch Talk band members" class="band-photo">
+            <div class="about-text-wrapper">
+                <div class="pt-def">
+                    <span class="show-location">porch talk; verb; </span>
+                    1. to sit around with friends, share a cozy beverage, and connect
+                    with the big and small while the world turns
+                </div>
+                <p class="about-text">
+                    Converging in Fort Collins, Porch Talk is a group of friendly transplants who've
+                    grown up and traveled coast to coast to hang out in the now.
+                    Bringing together a multitude of life experiences, influences, and styles,
+                    Porch Talk is built on having fun and loving to create.
+                    <br><br>
+                    A four piece band made up of Timmy (guitar/vocals), Zane (guitar/vocals),
+                    Kevin (drums), and John (bass/mandolin/vocals), each member contributes to
+                    the vision of Porch Talk. The group is constantly writing new material and recording
+                    their own music in the unofficial Treehouse Studios. Inspired by good conversations
+                    on a nice porch—often fueled by coffee, fresh air, and sunshine—their songs reflect
+                    everyday life and a love for creating. Porch Talk is simply themselves
+                    and grateful to be part of the evolving Northern Colorado music scene.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="merch">
+        <h2>Merch</h2>
+        <div class="merch-grid">
+            <a href="/merch" class="merch-box">
+                <h3>Apparel</h3>
+                <img class="merch-img" src="src/assets/bird_hat.jpg" alt="Apparel">
+                <p>T-shirts, hoodies, and more</p>
+            </a>
+            <a href="/merch" class="merch-box">
+                <h3>Stickers</h3>
+                <img class="merch-img" src="src/assets/pt_sticker.png" alt="Stickers">
+                <p>Stickers and decals</p>
+            </a>
+            <a href="/merch" class="merch-box">
+                <h3>Miscellaneous</h3>
+                <img class="merch-img" src="src/assets/bird_hat.jpg" alt="Miscellaneous">
+                <p>Posters, patches, and more</p>
+            </a>
+        </div>
+    </section>
+  </div>
+
+  <footer>
+      <p>&copy; 2025 Porch Talk. All rights reserved.</p>
+      <div class="social-links">
+          <a href="https://www.instagram.com/porchtalkband/">Instagram</a>
+          <a href="https://www.youtube.com/@Porch-Talk-Band">YouTube</a>
+          <a href="https://soundcloud.com/porch-talk-1" target="_blank">SoundCloud</a>
+          <a>porchtalkmusic@gmail.com</a>
+      </div>
+  </footer>
+
+  <script>
+    // ─── Shows Data ───────────────────────────────────────────────────────────
+    // To add a show: push an object to upcomingShows or pastShows.
+    // Fields: date, venue, location, time, watchUrl (optional)
+
+    const upcomingShows = [
+      { date: "Wednesday, Feb 26th, 2025", venue: "Swing Station",     location: "Fort Collins, CO", time: "6:30 PM" },
+      { date: "Tuesday, Feb 25th, 2025",   venue: "Avogadros Number",  location: "Fort Collins, CO", time: "7:00 PM" },
+    ];
+
+    const pastShows = [
+      { date: "Wednesday, Jan 28th, 2025",      venue: "Swing Station",    location: "Fort Collins, CO", time: "6:30 PM", watchUrl: "https://youtu.be/2JSAQWYKH7w?si=zIxKpdnnbQZj4B2y" },
+      { date: "Wednesday, December 10th, 2025", venue: "Swing Station",    location: "Fort Collins, CO", time: "6:30 PM", watchUrl: "https://youtu.be/fiBTt4vU4ow?si=q5iakizqlGPwI0Wb" },
+      { date: "Saturday, December 3rd, 2025",   venue: "Treehouse Studios", location: "Fort Collins, CO", time: "7:00 PM", watchUrl: "https://youtu.be/Wmi0ZSjwz2o?si=NFokOKUg2yKqjhsV" },
+      { date: "Tuesday, September 20th, 2025",  venue: "Avogadros Number", location: "Fort Collins, CO", time: "8:00 PM" },
+      { date: "Wednesday, August 7th, 2025",    venue: "Swing Station",    location: "Fort Collins, CO", time: "7:00 PM" },
+    ];
+
+    // ─── Render ───────────────────────────────────────────────────────────────
+    function renderShows(shows, listId) {
+      const ul = document.getElementById(listId);
+      ul.innerHTML = shows.map(show => `
+        <li class="show-item">
+          <div class="show-date">${show.date}</div>
+          <div class="show-venue">${show.venue}</div>
+          <div class="show-location">${show.location} • ${show.time}</div>
+          ${show.watchUrl ? `<a href="${show.watchUrl}" class="live-performance" target="_blank" rel="noopener noreferrer">Watch Here</a>` : ''}
+        </li>
+      `).join('');
+    }
+
+    renderShows(upcomingShows, 'upcoming-shows');
+    renderShows(pastShows, 'past-shows');
+  </script>
 </body>
 </html>
