@@ -21,6 +21,8 @@
             <li><a href="#shows">Shows</a></li>
             <li><a href="#about">About Us</a></li>
             <li><a href="#merch">Merch</a></li>
+            <!-- TODO: Uncomment once epk.html is ready to publish -->
+            <!-- <li><a href="epk.html">Press Kit</a></li> -->
         </ul>
     </nav>
   </header>
@@ -77,8 +79,22 @@
         </div>
     </section>
 
+    <!-- TODO: New graphic design assets — swap in updated artwork from the designer.
+         Assets live in src/assets/. Replace placeholder images (bird_hat.jpg, etc.)
+         with the new files once received. Also update the header logo/tagline if
+         new brand artwork is provided. -->
+
     <section id="merch">
         <h2>Merch</h2>
+        <!-- TODO: Decide on merch strategy before enabling this section.
+             Options to evaluate:
+             A) Printful/Printify integration — print-on-demand, no inventory,
+                link out to a hosted storefront (simplest, zero upfront cost)
+             B) Bandcamp merch — sell physical goods alongside music
+             C) Custom /merch page on this site with Stripe checkout
+             D) Link to a third-party store (Shopify, Big Cartel, etc.)
+             Once decided: remove the "Coming Soon" overlay (if any), wire up
+             real product links, and replace placeholder images with actual merch photos. -->
         <div class="merch-grid">
             <a href="/merch" class="merch-box">
                 <h3>Apparel</h3>
@@ -113,6 +129,12 @@
     // ─── Shows Data ───────────────────────────────────────────────────────────
     // To add a show: push an object to upcomingShows or pastShows.
     // Fields: date, venue, location, time, watchUrl (optional)
+
+    // TODO: Auto-sort shows by date — store all shows in a single array with an
+    // ISO date field (e.g. isoDate: "2025-08-07") and split them at render time
+    // into upcoming vs. past by comparing against new Date(). This way you only
+    // maintain one list and shows automatically migrate from upcoming → past.
+    // Example shape: { isoDate: "2025-08-07", date: "Wednesday, August 7th, 2025", ... }
 
     const upcomingShows = [
 
