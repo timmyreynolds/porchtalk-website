@@ -43,8 +43,48 @@
     ──────────────────────────────────────────────────────────────────────── -->
     <section id="epk-photos">
         <h2>Photos</h2>
-        <!-- TODO: Replace placeholder with real press photo grid + download links -->
-        <img src="src/assets/pt_cover_photo.JPG" alt="Porch Talk" style="max-width:100%">
+        <div class="photo-grid">
+            <img src="src/assets/pt_cover_photo.JPG" alt="Porch Talk" class="photo-thumb">
+            <img src="src/assets/pt_firstshow.jpg" alt="Porch Talk First Show" class="photo-thumb">
+            <img src="src/assets/bird_hat.jpg" alt="Porch Talk" class="photo-thumb">
+        </div>
+
+        <div id="lightbox" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:1000; align-items:center; justify-content:center; cursor:zoom-out;">
+            <img id="lightbox-img" src="" alt="" style="max-width:90vw; max-height:90vh; border-radius:8px; box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+        </div>
+
+        <style>
+            .photo-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+            }
+            .photo-thumb {
+                width: 100%;
+                aspect-ratio: 4/3;
+                object-fit: cover;
+                border-radius: 8px;
+                cursor: zoom-in;
+                transition: opacity 0.2s ease;
+            }
+            .photo-thumb:hover { opacity: 0.85; }
+            @media (max-width: 768px) {
+                .photo-grid { grid-template-columns: 1fr; }
+            }
+        </style>
+
+        <script>
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            document.querySelectorAll('.photo-thumb').forEach(img => {
+                img.addEventListener('click', () => {
+                    lightboxImg.src = img.src;
+                    lightboxImg.alt = img.alt;
+                    lightbox.style.display = 'flex';
+                });
+            });
+            lightbox.addEventListener('click', () => { lightbox.style.display = 'none'; });
+        </script>
     </section>
 
     <section id="epk-music">
