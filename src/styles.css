@@ -265,10 +265,13 @@ h2 {
 
 .show-item {
     background: var(--cream);
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-    border-radius: 8px;
+    padding: 0.55rem 1rem;
+    margin-bottom: 0.35rem;
+    border-radius: 6px;
     transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .show-item:hover {
@@ -278,24 +281,31 @@ h2 {
 .show-date {
     color: var(--dark-brown);
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    min-width: 215px;
+    flex-shrink: 0;
 }
 
 .live-performance {
     color: var(--dark-brown);
-    margin-top: 0.5rem;
+    margin-top: 0;
     display: inline-block;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .show-venue {
     color: var(--dark-brown);
-    font-size: 1.2rem;
-    margin: 0.5rem 0;
+    font-size: 1rem;
+    margin: 0;
+    flex: 1;
 }
 
 .show-location {
     color: var(--dark-brown);
     font-style: italic;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 /* About */
@@ -486,6 +496,17 @@ footer {
         flex: none;
         width: 100%;
         max-width: 100%;
+    }
+
+    .show-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.15rem;
+        padding: 0.6rem 0.75rem;
+    }
+
+    .show-date {
+        min-width: unset;
     }
 
     .merch-grid {
