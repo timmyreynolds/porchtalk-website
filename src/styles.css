@@ -163,6 +163,101 @@ h2 {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
+/* Listen Tabs */
+.listen-tab-bar {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    align-items: center;
+}
+
+.tab-btn {
+    background-color: var(--dark-teal);
+    color: var(--cream);
+    border: none;
+    padding: 0.6rem 1.8rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: url('../src/assets/pt_cursor.png'), auto;
+    transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+    background-color: var(--orange);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.tab-btn.active {
+    background-color: var(--yellow);
+    color: var(--dark-brown);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.tab-panel.hidden {
+    display: none;
+}
+
+.listen-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.platform-links {
+    display: flex;
+    gap: 1rem;
+    margin-left: auto;
+    flex-wrap: wrap;
+}
+
+.platform-links a {
+    background-color: var(--dark-teal);
+    color: var(--cream);
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.platform-links a:hover {
+    background-color: var(--yellow);
+    color: var(--dark-brown);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.demos-scroll {
+    max-height: 540px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-right: 0.25rem;
+}
+
+.demos-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.demos-scroll::-webkit-scrollbar-track {
+    background: var(--dark-teal);
+    border-radius: 3px;
+}
+
+.demos-scroll::-webkit-scrollbar-thumb {
+    background: var(--yellow);
+    border-radius: 3px;
+}
+
 /* Shows */
 .shows-list {
     list-style: none;
