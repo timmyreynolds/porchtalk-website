@@ -537,4 +537,29 @@ footer {
         width: 60%;
         max-width: 250px;
     }
+
+    .music-player {
+        padding: 1.25rem;
+    }
+
+    .listen-tab-bar {
+        flex-wrap: wrap;
+    }
+
+    .listen-subtitle {
+        position: static;
+        transform: none;
+        white-space: normal;
+        width: 100%;
+        order: 3;
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .platform-links {
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+        order: 4;
+    }
 }
