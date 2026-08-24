@@ -327,6 +327,20 @@ h2 {
     flex-shrink: 0;
 }
 
+.show-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 999px;
+    flex-shrink: 0;
+    align-self: center;
+}
+
+.show-tag--upcoming { background: var(--green); color: var(--cream); }
+.show-tag--past     { background: #ccc;         color: #555; }
+
 /* About */
 .pt-def {
     background: var(--cream);

@@ -94,11 +94,8 @@
     </section>
 
     <section id="shows">
-        <h2>Upcoming Shows</h2>
-        <ul class="shows-list" id="upcoming-shows"></ul>
-
-        <h2>Past Shows</h2>
-        <ul class="shows-list" id="past-shows"></ul>
+        <h2>Shows</h2>
+        <ul class="shows-list" id="shows-list"></ul>
     </section>
 
     <!-- TODO: New graphic design assets — swap in updated artwork from the designer.
@@ -149,47 +146,43 @@
 
   <script>
     // ─── Shows Data ───────────────────────────────────────────────────────────
-    // To add a show: push an object to upcomingShows or pastShows.
-    // Fields: date, venue, location, time, watchUrl (optional)
-
-    // TODO: Auto-sort shows by date — store all shows in a single array with an
-    // ISO date field (e.g. isoDate: "2025-08-07") and split them at render time
-    // into upcoming vs. past by comparing against new Date(). This way you only
-    // maintain one list and shows automatically migrate from upcoming → past.
-    // Example shape: { isoDate: "2025-08-07", date: "Wednesday, August 7th, 2025", ... }
-
-    const upcomingShows = [
-        { date: "Friday, September 25th, 2026", venue: "Swing Station", location: "Laporte, CO", time: "8:00 PM" },
-        { date: "Friday, November 27th, 2026", venue: "The Atrium", location: "Fort Collins, CO", time: "7:30 PM" },
-    ];
-
-    const pastShows = [
-        { date: "Friday, August 22nd, 2026", venue: "Drifters Thrift Bar", location: "Longmont, CO", time: "8:00 PM" },
-        { date: "Saturday, July 18th, 2026", venue: "Dry Land Distillers", location: "Longmont, CO", time: "7:30 PM" },
-        { date: "Wednesday, May 13th, 2026", venue: "Swing Station", location: "Laporte, CO", time: "6:30 PM", watchUrl: "https://youtu.be/6pH0n469pYs?si=9Ge-EppwPj6oJBjg" },
-        { date: "Saturday, March 21st, 2025",   venue: "Treehouse Studios", location: "Fort Collins, CO", time: "7:00 PM"},
-        { date: "Wednesday, Jan 28th, 2025",      venue: "Swing Station",    location: "Laporte, CO", time: "6:30 PM", watchUrl: "https://youtu.be/2JSAQWYKH7w?si=zIxKpdnnbQZj4B2y" },
-        { date: "Wednesday, December 10th, 2025", venue: "Swing Station",    location: "Laporte, CO", time: "6:30 PM", watchUrl: "https://youtu.be/fiBTt4vU4ow?si=q5iakizqlGPwI0Wb" },
-        { date: "Wednesday, December 3rd, 2025",   venue: "Treehouse Studios", location: "Fort Collins, CO", time: "7:00 PM", watchUrl: "https://youtu.be/Wmi0ZSjwz2o?si=NFokOKUg2yKqjhsV" },
-        { date: "Tuesday, September 20th, 2025",  venue: "Avogadros Number", location: "Fort Collins, CO", time: "8:00 PM" },
-        { date: "Wednesday, August 7th, 2025",    venue: "Swing Station",    location: "Laporte, CO", time: "7:00 PM" },
+    // To add a show: add an object to the shows array.
+    // Fields: isoDate (YYYY-MM-DD, used for auto upcoming/past split), date (display string),
+    //         venue, location, time, watchUrl (optional)
+    const shows = [
+      { isoDate: "2026-11-27", date: "Friday, November 27th, 2026",    venue: "The Atrium",          location: "Fort Collins, CO", time: "7:30 PM" },
+      { isoDate: "2026-09-25", date: "Friday, September 25th, 2026",   venue: "Swing Station",       location: "Laporte, CO",      time: "8:00 PM" },
+      { isoDate: "2026-08-22", date: "Friday, August 22nd, 2026",      venue: "Drifters Thrift Bar", location: "Longmont, CO",     time: "8:00 PM" },
+      { isoDate: "2026-07-18", date: "Saturday, July 18th, 2026",      venue: "Dry Land Distillers", location: "Longmont, CO",     time: "7:30 PM" },
+      { isoDate: "2026-05-13", date: "Wednesday, May 13th, 2026",      venue: "Swing Station",       location: "Laporte, CO",      time: "6:30 PM", watchUrl: "https://youtu.be/6pH0n469pYs?si=9Ge-EppwPj6oJBjg" },
+      { isoDate: "2025-12-10", date: "Wednesday, December 10th, 2025", venue: "Swing Station",       location: "Laporte, CO",      time: "6:30 PM", watchUrl: "https://youtu.be/fiBTt4vU4ow?si=q5iakizqlGPwI0Wb" },
+      { isoDate: "2025-12-03", date: "Wednesday, December 3rd, 2025",  venue: "Treehouse Studios",   location: "Fort Collins, CO", time: "7:00 PM", watchUrl: "https://youtu.be/Wmi0ZSjwz2o?si=NFokOKUg2yKqjhsV" },
+      { isoDate: "2025-09-20", date: "Tuesday, September 20th, 2025",  venue: "Avogadros Number",    location: "Fort Collins, CO", time: "8:00 PM" },
+      { isoDate: "2025-08-07", date: "Wednesday, August 7th, 2025",    venue: "Swing Station",       location: "Laporte, CO",      time: "7:00 PM" },
+      { isoDate: "2025-03-21", date: "Saturday, March 21st, 2025",     venue: "Treehouse Studios",   location: "Fort Collins, CO", time: "7:00 PM" },
+      { isoDate: "2025-01-28", date: "Wednesday, Jan 28th, 2025",      venue: "Swing Station",       location: "Laporte, CO",      time: "6:30 PM", watchUrl: "https://youtu.be/2JSAQWYKH7w?si=zIxKpdnnbQZj4B2y" },
     ];
 
     // ─── Render ───────────────────────────────────────────────────────────────
-    function renderShows(shows, listId) {
-      const ul = document.getElementById(listId);
-      ul.innerHTML = shows.map(show => `
-        <li class="show-item">
-          <div class="show-date">${show.date}</div>
-          <div class="show-venue">${show.venue}</div>
-          <div class="show-location">${show.location} • ${show.time}</div>
-          ${show.watchUrl ? `<a href="${show.watchUrl}" class="live-performance" target="_blank" rel="noopener noreferrer">Watch Here</a>` : ''}
-        </li>
-      `).join('');
+    function renderShows(shows) {
+      const today    = new Date().toISOString().slice(0, 10);
+      const upcoming = shows.filter(s => s.isoDate >= today).sort((a, b) => a.isoDate.localeCompare(b.isoDate));
+      const past     = shows.filter(s => s.isoDate <  today).sort((a, b) => b.isoDate.localeCompare(a.isoDate));
+      const ul = document.getElementById('shows-list');
+      ul.innerHTML = [...upcoming, ...past].map(show => {
+        const isUpcoming = show.isoDate >= today;
+        return `
+          <li class="show-item">
+            <span class="show-tag ${isUpcoming ? 'show-tag--upcoming' : 'show-tag--past'}">${isUpcoming ? 'Upcoming' : 'Past'}</span>
+            <div class="show-date">${show.date}</div>
+            <div class="show-venue">${show.venue}</div>
+            <div class="show-location">${show.location} • ${show.time}</div>
+            ${show.watchUrl ? `<a href="${show.watchUrl}" class="live-performance" target="_blank" rel="noopener noreferrer">Watch Here</a>` : ''}
+          </li>`;
+      }).join('');
     }
 
-    renderShows(upcomingShows, 'upcoming-shows');
-    renderShows(pastShows, 'past-shows');
+    renderShows(shows);
 
     // ─── Listen Tabs ──────────────────────────────────────────────────────────
     document.querySelectorAll('.tab-btn').forEach(btn => {
