@@ -271,7 +271,10 @@ h2 {
 }
 
 .booking-cta a {
+    background-color: var(--dark-teal);
     color: var(--yellow);
+    padding: 0.2rem 0.8rem;
+    border-radius: 25px;
     text-decoration: none;
     font-weight: bold;
 }
