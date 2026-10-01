@@ -154,26 +154,35 @@
   <script>
     // ─── Shows Data ───────────────────────────────────────────────────────────
     // To add a show: add an object to the shows array.
-    // Fields: isoDate (YYYY-MM-DD, used for auto upcoming/past split), date (display string),
+    // Fields: isoDate (YYYY-MM-DD; drives the upcoming/past split and the displayed date),
     //         venue, location, time, watchUrl (optional)
     const shows = [
-      { isoDate: "2026-10-17", date: "Saturday, October 17th, 2026",      venue: "Dry Land Distillers", location: "Longmont, CO",     time: "5:00 PM" },
-      { isoDate: "2026-10-19", date: "Monday, October 19th, 2026",      venue: "KRFC 88.9 - Drop In", location: "Fort Collins, CO",     time: "3:30 PM" },
-      { isoDate: "2026-10-23", date: "Friday, October 23rd, 2026",      venue: "Horsetooth Tavern", location: "Fort Collins, CO",     time: "7:00 PM" },
-      { isoDate: "2026-11-27", date: "Friday, November 27th, 2026",    venue: "The Atrium",          location: "Fort Collins, CO", time: "7:30 PM" },
-      { isoDate: "2026-09-25", date: "Friday, September 25th, 2026",   venue: "Swing Station",       location: "Laporte, CO",      time: "8:00 PM" },
-      { isoDate: "2026-08-22", date: "Friday, August 22nd, 2026",      venue: "Drifters Thrift Bar", location: "Longmont, CO",     time: "8:00 PM" },
-      { isoDate: "2026-07-18", date: "Saturday, July 18th, 2026",      venue: "Dry Land Distillers", location: "Longmont, CO",     time: "7:30 PM" },
-      { isoDate: "2026-05-13", date: "Wednesday, May 13th, 2026",      venue: "Swing Station",       location: "Laporte, CO",      time: "6:30 PM", watchUrl: "https://youtu.be/6pH0n469pYs?si=9Ge-EppwPj6oJBjg" },
-      { isoDate: "2025-12-10", date: "Wednesday, December 10th, 2025", venue: "Swing Station",       location: "Laporte, CO",      time: "6:30 PM", watchUrl: "https://youtu.be/fiBTt4vU4ow?si=q5iakizqlGPwI0Wb" },
-      { isoDate: "2025-12-03", date: "Wednesday, December 3rd, 2025",  venue: "Treehouse Studios",   location: "Fort Collins, CO", time: "7:00 PM", watchUrl: "https://youtu.be/Wmi0ZSjwz2o?si=NFokOKUg2yKqjhsV" },
-      { isoDate: "2025-09-20", date: "Tuesday, September 20th, 2025",  venue: "Avogadros Number",    location: "Fort Collins, CO", time: "8:00 PM" },
-      { isoDate: "2025-08-07", date: "Wednesday, August 7th, 2025",    venue: "Swing Station",       location: "Laporte, CO",      time: "7:00 PM" },
-      { isoDate: "2026-03-21", date: "Saturday, March 21st, 2026",     venue: "Treehouse Studios",   location: "Fort Collins, CO", time: "7:00 PM" },
-      { isoDate: "2026-01-28", date: "Wednesday, Jan 28th, 2026",      venue: "Swing Station",       location: "Laporte, CO",      time: "6:30 PM", watchUrl: "https://youtu.be/2JSAQWYKH7w?si=zIxKpdnnbQZj4B2y" },
+      { isoDate: "2026-10-17", venue: "Dry Land Distillers", location: "Longmont, CO",     time: "5:00 PM" },
+      { isoDate: "2026-10-19", venue: "KRFC 88.9 - Drop In", location: "Fort Collins, CO",     time: "3:30 PM" },
+      { isoDate: "2026-10-23", venue: "Horsetooth Tavern", location: "Fort Collins, CO",     time: "7:00 PM" },
+      { isoDate: "2026-11-27", venue: "The Atrium",          location: "Fort Collins, CO", time: "7:30 PM" },
+      { isoDate: "2026-09-25", venue: "Swing Station",       location: "Laporte, CO",      time: "8:00 PM" },
+      { isoDate: "2026-08-22", venue: "Drifters Thrift Bar", location: "Longmont, CO",     time: "8:00 PM" },
+      { isoDate: "2026-07-18", venue: "Dry Land Distillers", location: "Longmont, CO",     time: "7:30 PM" },
+      { isoDate: "2026-05-13", venue: "Swing Station",       location: "Laporte, CO",      time: "6:30 PM", watchUrl: "https://youtu.be/6pH0n469pYs?si=9Ge-EppwPj6oJBjg" },
+      { isoDate: "2025-12-10", venue: "Swing Station",       location: "Laporte, CO",      time: "6:30 PM", watchUrl: "https://youtu.be/fiBTt4vU4ow?si=q5iakizqlGPwI0Wb" },
+      { isoDate: "2025-12-03", venue: "Treehouse Studios",   location: "Fort Collins, CO", time: "7:00 PM", watchUrl: "https://youtu.be/Wmi0ZSjwz2o?si=NFokOKUg2yKqjhsV" },
+      { isoDate: "2025-09-20", venue: "Avogadros Number",    location: "Fort Collins, CO", time: "8:00 PM" },
+      { isoDate: "2025-08-07", venue: "Swing Station",       location: "Laporte, CO",      time: "7:00 PM" },
+      { isoDate: "2026-03-21", venue: "Treehouse Studios",   location: "Fort Collins, CO", time: "7:00 PM" },
+      { isoDate: "2026-01-28", venue: "Swing Station",       location: "Laporte, CO",      time: "6:30 PM", watchUrl: "https://youtu.be/2JSAQWYKH7w?si=zIxKpdnnbQZj4B2y" },
     ];
 
     // ─── Render ───────────────────────────────────────────────────────────────
+    function formatDate(isoDate) {
+      const [y, m, d] = isoDate.split('-').map(Number);
+      const dt = new Date(y, m - 1, d);
+      const suffix = (d % 100 >= 11 && d % 100 <= 13) ? 'th' : ({ 1: 'st', 2: 'nd', 3: 'rd' }[d % 10] || 'th');
+      const weekday = dt.toLocaleDateString('en-US', { weekday: 'long' });
+      const month = dt.toLocaleDateString('en-US', { month: 'long' });
+      return `${weekday}, ${month} ${d}${suffix}, ${y}`;
+    }
+
     function renderShows(shows) {
       const today    = new Date().toISOString().slice(0, 10);
       const upcoming = shows.filter(s => s.isoDate >= today).sort((a, b) => a.isoDate.localeCompare(b.isoDate));
@@ -184,7 +193,7 @@
         return `
           <li class="show-item">
             <span class="show-tag ${isUpcoming ? 'show-tag--upcoming' : 'show-tag--past'}">${isUpcoming ? 'Upcoming' : 'Past'}</span>
-            <div class="show-date">${show.date}</div>
+            <div class="show-date">${formatDate(show.isoDate)}</div>
             <div class="show-venue">${show.venue}</div>
             <div class="show-location">${show.location} • ${show.time}</div>
             ${show.watchUrl ? `<a href="${show.watchUrl}" class="live-performance" target="_blank" rel="noopener noreferrer">Watch Here</a>` : ''}
