@@ -63,16 +63,16 @@
         <h2>Listen</h2>
         <div class="music-player">
             <div class="listen-tab-bar">
-                <button class="tab-btn active" data-tab="demos">Demos</button>
+                <button class="tab-btn active" data-tab="release">Release</button>
+                <button class="tab-btn" data-tab="demos">Demos</button>
                 <button class="tab-btn" data-tab="live">Live</button>
-                <p class="listen-subtitle">Stream our latest tracks</p>
-                <div class="platform-links">
-                    <a href="https://www.youtube.com/@Porch-Talk-Band" target="_blank">YouTube</a>
-                    <a href="https://soundcloud.com/porch-talk-1" target="_blank">SoundCloud</a>
-                </div>
             </div>
 
-            <div class="tab-panel" id="tab-demos">
+            <div class="tab-panel" id="tab-release">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0JSaP76rMsb906wJbHh9La?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+
+            <div class="tab-panel hidden" id="tab-demos">
                 
                 <div class="demos-scroll">
                     <iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2342132012&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
@@ -88,6 +88,12 @@
                     <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A2279624306&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
                 </div>
             </div>
+
+            <p class="platform-links">
+                <a href="https://open.spotify.com/artist/6n08JhUtSpucBsPGYwKvDM" target="_blank">Spotify</a>
+                <a href="https://www.youtube.com/@Porch-Talk-Band" target="_blank">YouTube</a>
+                <a href="https://soundcloud.com/porch-talk-1" target="_blank">SoundCloud</a>
+            </p>
 
             <p class="booking-cta">Like what you hear? Email us at <a href="mailto:porchtalkmusic@gmail.com">porchtalkmusic@gmail.com</a> for booking requests.</p>
         </div>
@@ -139,6 +145,7 @@
       <div class="social-links">
           <a href="https://www.instagram.com/porchtalkband/">Instagram</a>
           <a href="https://www.youtube.com/@Porch-Talk-Band">YouTube</a>
+          <a href="https://open.spotify.com/artist/6n08JhUtSpucBsPGYwKvDM" target="_blank">Spotify</a>
           <a href="https://soundcloud.com/porch-talk-1" target="_blank">SoundCloud</a>
           <a>porchtalkmusic@gmail.com</a>
       </div>
@@ -151,7 +158,8 @@
     //         venue, location, time, watchUrl (optional)
     const shows = [
       { isoDate: "2026-10-17", date: "Saturday, October 17th, 2026",      venue: "Dry Land Distillers", location: "Longmont, CO",     time: "5:00 PM" },
-      { isoDate: "2026-10-23", date: "Saturday, October 23rd, 2026",      venue: "Horsetooth Tavern", location: "Fort Collins, CO",     time: "7:00 PM" },
+      { isoDate: "2026-10-17", date: "Monday, October 19th, 2026",      venue: "KRFC 88.9 - Drop In", location: "Fort Collins, CO",     time: "3:30 PM" },
+      { isoDate: "2026-10-23", date: "Friday, October 23rd, 2026",      venue: "Horsetooth Tavern", location: "Fort Collins, CO",     time: "7:00 PM" },
       { isoDate: "2026-11-27", date: "Friday, November 27th, 2026",    venue: "The Atrium",          location: "Fort Collins, CO", time: "7:30 PM" },
       { isoDate: "2026-09-25", date: "Friday, September 25th, 2026",   venue: "Swing Station",       location: "Laporte, CO",      time: "8:00 PM" },
       { isoDate: "2026-08-22", date: "Friday, August 22nd, 2026",      venue: "Drifters Thrift Bar", location: "Longmont, CO",     time: "8:00 PM" },

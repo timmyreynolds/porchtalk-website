@@ -213,24 +213,27 @@ h2 {
 
 .platform-links {
     display: flex;
-    gap: 1rem;
-    margin-left: auto;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.25rem 0 0;
 }
 
 .platform-links a {
     background-color: var(--dark-teal);
     color: var(--cream);
-    padding: 0.8rem 1.5rem;
-    text-decoration: none;
+    padding: 0.6rem 1.8rem;
     border-radius: 25px;
-    transition: all 0.3s ease;
+    font-size: 1rem;
     font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
 .platform-links a:hover {
-    background-color: var(--yellow);
-    color: var(--dark-brown);
+    background-color: var(--orange);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
@@ -568,12 +571,5 @@ footer {
         order: 3;
         font-size: 1rem;
         text-align: center;
-    }
-
-    .platform-links {
-        margin-left: 0;
-        width: 100%;
-        justify-content: center;
-        order: 4;
     }
 }
